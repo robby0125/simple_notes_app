@@ -7,7 +7,7 @@ class Routes {
   static const String writing = '/writing';
 
   static final List<GetPage> getPages = [
-    GetPage(name: home, page: () => const HomePage()),
+    GetPage(name: home, page: () => HomePage()),
     GetPage(name: writing, page: () => const WritingPage()),
   ];
 }
