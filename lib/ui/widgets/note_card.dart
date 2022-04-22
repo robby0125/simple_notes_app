@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:simple_notes_app/core/models/note.dart';
+import 'package:simple_notes_app/ui/utils/routes.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({
@@ -13,27 +14,30 @@ class NoteCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              note.title ?? 'No title',
-              style: Get.textTheme.subtitle1!.copyWith(
-                fontWeight: FontWeight.bold,
+      child: InkWell(
+        onTap: () => Get.toNamed(Routes.writing, arguments: note.uid),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                note.title ?? 'No title',
+                style: Get.textTheme.subtitle1!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            const SizedBox(height: 8),
-            Expanded(
-              child: Text(
-                note.content,
-                style: Get.textTheme.bodyText2,
-                overflow: TextOverflow.fade,
+              const SizedBox(height: 8),
+              Expanded(
+                child: Text(
+                  note.content,
+                  style: Get.textTheme.bodyText2,
+                  overflow: TextOverflow.fade,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
